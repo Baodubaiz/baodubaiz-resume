@@ -1,97 +1,176 @@
+"use client";
+
 import React from "react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { useTranslation } from "@/hooks/useTranslation";
+import { Target, Boxes, RefreshCw } from "lucide-react";
 
-const HIGHLIGHTS = [
+const MINDSET_CARDS_CONFIG = [
   {
-    title: "Clean Architecture",
-    description: "Designing scalable, maintainable systems with clean separation of concerns and high cohesion.",
-    icon: "📐",
+    icon: Target,
+    iconColor: "text-cyan-400",
+    iconBoxClass:
+      "bg-cyan-500/10 border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:bg-cyan-500/20",
+    borderClass: "border-zinc-800/80",
+    hoverClass:
+      "hover:border-cyan-500/30 hover:shadow-[0_8px_30px_rgba(6,182,212,0.06)]",
   },
   {
-    title: "Performance First",
-    description: "Optimizing bundle sizes, scroll animations, server rendering, and core web vitals for blazing speed.",
-    icon: "⚡",
+    icon: Boxes,
+    iconColor: "text-indigo-400",
+    iconBoxClass:
+      "bg-indigo-500/10 border-indigo-500/20 group-hover:border-indigo-500/40 group-hover:bg-indigo-500/20",
+    borderClass: "border-zinc-800/80",
+    hoverClass:
+      "hover:border-indigo-500/30 hover:shadow-[0_8px_30px_rgba(99,102,241,0.06)]",
   },
   {
-    title: "Modern UI/UX",
-    description: "Translating complex functional requirements into intuitive, accessible, and fluid user interfaces.",
-    icon: "🎨",
-  },
-  {
-    title: "Full-Stack Mindset",
-    description: "Comfortable navigating the entire stack, from frontend interactions to backend API contracts.",
-    icon: "🔗",
+    icon: RefreshCw,
+    iconColor: "text-emerald-400",
+    iconBoxClass:
+      "bg-emerald-500/10 border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:bg-emerald-500/20",
+    borderClass: "border-zinc-800/80",
+    hoverClass:
+      "hover:border-emerald-500/30 hover:shadow-[0_8px_30px_rgba(16,185,129,0.06)]",
   },
 ];
 
 export function AboutSection() {
+  const { t } = useTranslation();
+
   return (
-    <section id="about" className="py-24 bg-zinc-950/40 relative">
+    <section id="about" className="py-24 sm:py-32 bg-zinc-950 relative overflow-hidden">
+      {/* Background ambient lighting accents */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-indigo-500/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-10 right-10 w-[400px] h-[250px] bg-cyan-500/5 blur-[100px] rounded-full" />
+      </div>
+
       <Container>
-        <SectionHeading
-          badge="About Me"
-          title="Building with Purpose & Precision"
-          subtitle="A passionate developer dedicated to building elegant web applications that combine robust engineering with delightful design."
-        />
+        {/* ======================================================== */}
+        {/* KHU VỰC 1: GIỚI THIỆU BẢN THÂN                          */}
+        {/* ======================================================== */}
+        <ScrollReveal direction="up" delayMs={0} className="max-w-4xl mb-20 md:mb-24">
+          {/* Nhãn nhỏ phía trên */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+            <span>{t.about.badge}</span>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Bio text */}
-          <ScrollReveal
-            direction="left"
-            className="lg:col-span-6 space-y-5 text-zinc-300 leading-relaxed text-base"
-          >
-            <p>
-              I am a software engineer focused on building high-performance web
-              applications. I love turning complex problems into elegant,
-              scalable solutions using TypeScript, React, and Next.js.
-            </p>
-            <p>
-              My development philosophy centers around writing readable,
-              maintainable code, embracing feature-based architectures, and
-              delivering responsive, accessible experiences across all devices.
-            </p>
-            <p className="text-zinc-400">
-              When I&apos;m not writing code, I enjoy exploring new web standards,
-              contributing to open-source tools, and experimenting with creative
-              interactions.
-            </p>
+          {/* Tiêu đề chính */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.2] mb-6">
+            {t.about.headline.part1}
+            <span className="bg-gradient-to-r from-indigo-300 via-cyan-200 to-indigo-400 bg-clip-text text-transparent">
+              {t.about.headline.highlight1}
+            </span>
+            {t.about.headline.part2}
+            <span className="bg-gradient-to-r from-cyan-300 via-teal-200 to-indigo-300 bg-clip-text text-transparent">
+              {t.about.headline.highlight2}
+            </span>
+          </h2>
 
-            <div className="pt-4 flex flex-wrap gap-4 text-sm font-medium">
-              <div className="px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800">
-                <span className="block text-2xl font-bold text-indigo-400">3+</span>
-                <span className="text-xs text-zinc-400">Years Experience</span>
+          {/* Đoạn mô tả */}
+          <p className="text-base sm:text-lg md:text-xl text-zinc-300/90 leading-relaxed font-normal max-w-3xl">
+            {t.about.description}
+          </p>
+        </ScrollReveal>
+
+        {/* ======================================================== */}
+        {/* KHU VỰC 2: TRIẾT LÝ PHÁT TRIỂN                          */}
+        {/* ======================================================== */}
+        <div className="pt-12 sm:pt-16 border-t border-zinc-800/70 mb-20 md:mb-24">
+          <ScrollReveal direction="up" delayMs={150}>
+            {/* Header của khu vực 2 */}
+            <div className="max-w-3xl mb-10">
+              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-zinc-400 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                <span>{t.about.philosophy.badge}</span>
               </div>
-              <div className="px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800">
-                <span className="block text-2xl font-bold text-indigo-400">20+</span>
-                <span className="text-xs text-zinc-400">Projects Built</span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+                {t.about.philosophy.title}
+              </h3>
+              <p className="text-zinc-300/90 text-base sm:text-lg leading-relaxed">
+                {t.about.philosophy.description}
+              </p>
+            </div>
+
+            {/* 3 nguyên tắc dạng 3 cột phân cách rõ ràng */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {t.about.philosophy.principles.map((principle, idx) => (
+                <div
+                  key={principle.title}
+                  className="group relative p-6 sm:p-7 rounded-2xl bg-zinc-900/30 border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  <div className="text-xs font-mono text-zinc-500 mb-3 flex items-center justify-between">
+                    <span>PRINCIPLE // 0{idx + 1}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-indigo-400 transition-colors" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-white mb-2.5 group-hover:text-indigo-200 transition-colors">
+                    {principle.title}
+                  </h4>
+                  <p className="text-sm text-zinc-400 leading-relaxed">
+                    {principle.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* ======================================================== */}
+        {/* KHU VỰC 3: TƯ DUY KỸ THUẬT NỔI BẬT                      */}
+        {/* ======================================================== */}
+        <div className="pt-12 sm:pt-16 border-t border-zinc-800/70">
+          <ScrollReveal direction="up" delayMs={100}>
+            <div className="mb-10">
+              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-zinc-400 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                <span>{t.about.mindset.badge}</span>
               </div>
-              <div className="px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800">
-                <span className="block text-2xl font-bold text-indigo-400">100%</span>
-                <span className="text-xs text-zinc-400">Commitment to Quality</span>
-              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                {t.about.mindset.title}
+              </h3>
             </div>
           </ScrollReveal>
 
-          {/* Highlights grid */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {HIGHLIGHTS.map((item, index) => (
-              <ScrollReveal
-                key={item.title}
-                delayMs={index * 100}
-                direction="up"
-                className="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700/80 transition-all duration-200 hover:-translate-y-1 shadow-sm"
-              >
-                <div className="text-2xl mb-3">{item.icon}</div>
-                <h3 className="text-base font-semibold text-white mb-1.5">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-zinc-400 leading-normal">
-                  {item.description}
-                </p>
-              </ScrollReveal>
-            ))}
+          {/* Ba thẻ tư duy kỹ thuật */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {t.about.mindset.cards.map((card, idx) => {
+              const config = MINDSET_CARDS_CONFIG[idx] || MINDSET_CARDS_CONFIG[0];
+              const Icon = config.icon;
+              return (
+                <ScrollReveal
+                  key={card.number}
+                  direction="up"
+                  delayMs={150 + idx * 100}
+                >
+                  <div
+                    className={`group relative h-full p-6 sm:p-7 rounded-2xl bg-zinc-900/40 backdrop-blur-sm border transition-all duration-300 hover:-translate-y-1 ${config.borderClass} ${config.hoverClass}`}
+                  >
+                    {/* Hàng trên: Số thứ tự và Icon kỹ thuật */}
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="font-mono text-xs font-bold tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                        {card.number}
+                      </span>
+                      <div
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all duration-300 ${config.iconBoxClass}`}
+                      >
+                        <Icon className={`w-4 h-4 ${config.iconColor}`} />
+                      </div>
+                    </div>
+
+                    {/* Tiêu đề & Mô tả */}
+                    <h4 className="text-lg font-bold text-white mb-2.5 tracking-tight group-hover:text-zinc-100 transition-colors">
+                      {card.title}
+                    </h4>
+                    <p className="text-sm text-zinc-400 leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </Container>

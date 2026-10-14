@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import type { SocialLink } from "@/types/common.type";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const SOCIAL_LINKS: SocialLink[] = [
   { name: "GitHub", url: "https://github.com/Baodubaiz", label: "GitHub Profile" },
@@ -10,15 +13,17 @@ const SOCIAL_LINKS: SocialLink[] = [
 const CURRENT_YEAR = 2026;
 
 export function Footer() {
+  const { t, language } = useTranslation();
+
   return (
     <footer className="border-t border-zinc-800/80 bg-zinc-950 py-12 text-zinc-500">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col items-center md:items-start gap-1">
           <p className="text-sm text-zinc-400 font-medium">
-            © {CURRENT_YEAR} Bao Lam (Baodubaiz). All rights reserved.
+            © {CURRENT_YEAR} Bao Lam (Baodubaiz). {t.footer.rights}
           </p>
           <p className="text-xs text-zinc-600">
-            Built with Next.js, React 19, and Tailwind CSS.
+            {t.footer.builtWith}
           </p>
         </div>
 
@@ -39,7 +44,7 @@ export function Footer() {
             href="#hero"
             className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors inline-flex items-center gap-1"
           >
-            Back to Top ↑
+            {language === "vi" ? "Lên đầu trang ↑" : "Back to Top ↑"}
           </a>
         </div>
       </div>

@@ -30,6 +30,7 @@ export const metadata: Metadata = {
 };
 
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { LanguageProvider } from "@/i18n/LanguageProvider";
 
 export default function RootLayout({
   children,
@@ -42,7 +43,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <LanguageProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

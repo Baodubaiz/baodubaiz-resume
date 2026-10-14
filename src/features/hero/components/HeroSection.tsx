@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { useTranslation } from "@/hooks/useTranslation";
 import {
   Layers,
   Cpu,
@@ -34,6 +35,14 @@ const CHAPTERS: ChapterInfo[] = [
 ];
 
 export function HeroSection() {
+  const { t } = useTranslation();
+  const chapters: ChapterInfo[] = [
+    { id: "desk", label: t.hero.chapters.setup, progressTarget: 0.05 },
+    { id: "frontend", label: t.hero.chapters.frontend, progressTarget: 0.36 },
+    { id: "backend", label: t.hero.chapters.backend, progressTarget: 0.62 },
+    { id: "connect", label: t.hero.chapters.connect, progressTarget: 0.88 },
+  ];
+
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -355,30 +364,29 @@ export function HeroSection() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                Available for new opportunities
+                {t.hero.status}
               </div>
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1] drop-shadow-md">
-                Hi, I&apos;m{" "}
+                {t.hero.greeting}{" "}
                 <span className="bg-gradient-to-r from-indigo-400 via-violet-300 to-amber-200 bg-clip-text text-transparent">
-                  Bao Lam
+                  {t.hero.name}
                 </span>
               </h1>
 
               {/* Subtitle */}
               <p className="text-lg sm:text-2xl text-zinc-200 font-medium mb-4 drop-shadow">
-                Software Engineer &amp; Full-Stack Developer
+                {t.hero.role}
               </p>
 
               <p className="text-sm sm:text-base text-zinc-300/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
-                Crafting responsive, performant, and delightful digital experiences
-                with Next.js, TypeScript, and modern frontend architecture.
+                {t.hero.bio}
               </p>
 
               {/* Quick Tech Highlights (Metadata specs, not clickable buttons) */}
               <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-zinc-400 mb-8">
-                <span className="text-zinc-500 uppercase tracking-wider text-[11px] mr-1">Stack //</span>
+                <span className="text-zinc-500 uppercase tracking-wider text-[11px] mr-1">{t.hero.stackLabel}</span>
                 {["Java", "NestJS", "TypeScript", "React", "NextJS", "Tailwind CSS", "NodeJS"].map(
                   (tech) => (
                     <span
@@ -393,7 +401,7 @@ export function HeroSection() {
 
               {/* Ambient Scroll Cue */}
               <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono tracking-wider">
-                <span>SCROLL DOWN TO EXPLORE</span>
+                <span>{t.hero.scrollCue}</span>
                 <ChevronDown className="w-3.5 h-3.5 animate-bounce text-zinc-400" />
               </div>
             </div>
@@ -416,20 +424,18 @@ export function HeroSection() {
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-cyan-300 bg-zinc-950/80 border border-cyan-800/40 mb-5 backdrop-blur-md">
                 <Layers className="w-3.5 h-3.5 text-cyan-400" />
-                <span>02 / Frontend Architecture • Crystal Precision</span>
+                <span>{t.hero.chapter2.badge}</span>
               </div>
 
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-md">
-                Sculpting Interfaces with{" "}
+                {t.hero.chapter2.title1}{" "}
                 <span className="bg-gradient-to-r from-cyan-300 via-indigo-200 to-fuchsia-300 bg-clip-text text-transparent">
-                  Crystal Clarity
+                  {t.hero.chapter2.titleHighlight}
                 </span>
               </h2>
 
               <p className="text-base sm:text-xl text-zinc-200/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
-                Building responsive web interfaces with component-based architecture,
-                state management, and Next.js SSR. Focused on UI structure,
-                maintainability, and smooth user experiences.
+                {t.hero.chapter2.desc}
               </p>
 
               {/* Technical Capability Specs (Clean dark telemetry cards, not buttons) */}
@@ -437,23 +443,23 @@ export function HeroSection() {
                 {[
                   {
                     icon: Layers,
-                    title: "Crystal Architecture",
-                    desc: "Component Structure",
+                    title: t.hero.chapter2.archTitle,
+                    desc: t.hero.chapter2.archDesc,
                   },
                   {
                     icon: Cpu,
-                    title: "Next.js SSR",
-                    desc: "Fast Hydration & SEO",
+                    title: t.hero.chapter2.ssrTitle,
+                    desc: t.hero.chapter2.ssrDesc,
                   },
                   {
                     icon: GitBranch,
-                    title: "State Management",
-                    desc: "Predictable Reactive Flow",
+                    title: t.hero.chapter2.stateTitle,
+                    desc: t.hero.chapter2.stateDesc,
                   },
                   {
                     icon: Activity,
-                    title: "Fluid 60 FPS UX",
-                    desc: "Smooth Interactions",
+                    title: t.hero.chapter2.uxTitle,
+                    desc: t.hero.chapter2.uxDesc,
                   },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -490,20 +496,18 @@ export function HeroSection() {
             <div className="flex flex-col items-center text-center max-w-4xl mx-auto px-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-amber-300 bg-zinc-950/80 border border-amber-800/40 mb-5 backdrop-blur-md">
                 <Building2 className="w-3.5 h-3.5 text-amber-400" />
-                <span>03 / Backend Engineering • Metropolis Engine</span>
+                <span>{t.hero.chapter3.badge}</span>
               </div>
 
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-md">
-                Powering the City with{" "}
+                {t.hero.chapter3.title1}{" "}
                 <span className="bg-gradient-to-r from-amber-200 via-orange-300 to-rose-300 bg-clip-text text-transparent">
-                  Resilient Backend
+                  {t.hero.chapter3.titleHighlight}
                 </span>
               </h2>
 
               <p className="text-base sm:text-lg text-zinc-200/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
-                Designing REST APIs and business logic, implementing authentication and
-                authorization, handling transactions and data consistency, and building
-                maintainable architectures with database optimization and deployment automation.
+                {t.hero.chapter3.desc}
               </p>
 
               {/* 3 Cinematic Architecture Capability Panels (Clean dark glass, not colorful button boxes) */}
@@ -513,34 +517,34 @@ export function HeroSection() {
                     <Terminal className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm sm:text-base font-semibold text-white mb-1">
-                    REST APIs &amp; Logic
+                    {t.hero.chapter3.apiTitle}
                   </h3>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Designing robust REST APIs, business logic, authentication, and authorization.
+                    {t.hero.chapter3.apiDesc}
                   </p>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
+                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
                   <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-emerald-400 mb-3">
                     <Database className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm sm:text-base font-semibold text-white mb-1">
-                    Database &amp; Consistency
+                    {t.hero.chapter3.dbTitle}
                   </h3>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Handling transactions, ACID data consistency, and database query optimization.
+                    {t.hero.chapter3.dbDesc}
                   </p>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
+                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
                   <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-sky-400 mb-3">
                     <Building2 className="w-4 h-4" />
                   </div>
                   <h3 className="text-sm sm:text-base font-semibold text-white mb-1">
-                    Metropolis Infrastructure
+                    {t.hero.chapter3.infraTitle}
                   </h3>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Building maintainable architectures, cloud workflows, and deployment automation.
+                    {t.hero.chapter3.infraDesc}
                   </p>
                 </div>
               </div>
@@ -561,18 +565,18 @@ export function HeroSection() {
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-emerald-300 bg-zinc-950/80 border border-emerald-800/40 mb-5 backdrop-blur-md">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                <span>04 / Connect • Let&apos;s Build</span>
+                <span>{t.hero.chapter4.badge}</span>
               </div>
 
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-md">
-                Ready to Create Something{" "}
+                {t.hero.chapter4.title1}{" "}
                 <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-indigo-300 bg-clip-text text-transparent">
-                  Extraordinary?
+                  {t.hero.chapter4.titleHighlight}
                 </span>
               </h2>
 
               <p className="text-base sm:text-xl text-zinc-200/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
-                Explore my technical skill set, detailed case studies, and experience below.
+                {t.hero.chapter4.desc}
               </p>
 
               {/* Action Buttons */}
@@ -581,24 +585,24 @@ export function HeroSection() {
                   href="#about"
                   className="px-6 py-3 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 font-semibold text-sm transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  About My Journey
+                  {t.hero.chapter4.ctaJourney}
                 </a>
                 <a
                   href="#skills"
                   className="px-6 py-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 font-medium text-sm border border-zinc-700/60 backdrop-blur-md transition-all hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Tech Skills
+                  {t.hero.chapter4.ctaSkills}
                 </a>
                 <a
                   href="#contact"
                   className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-lg shadow-indigo-600/30 hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  Start a Conversation
+                  {t.hero.chapter4.ctaContact}
                 </a>
               </div>
 
               <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono mt-2">
-                <span>Continue scrolling down to explore</span>
+                <span>{t.hero.chapter4.continueScroll}</span>
                 <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
               </div>
             </div>
@@ -612,7 +616,7 @@ export function HeroSection() {
           aria-label="Story chapters"
           className="hidden md:flex flex-col gap-3 fixed right-6 top-1/2 -translate-y-1/2 z-30 bg-zinc-950/70 p-2.5 rounded-full border border-zinc-800/80 backdrop-blur-md shadow-xl"
         >
-          {CHAPTERS.map((ch, idx) => {
+          {chapters.map((ch, idx) => {
             const isActive = activeChapter === idx;
             return (
               <button
@@ -647,14 +651,14 @@ export function HeroSection() {
               }`}
           >
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping" />
-            <span>Scroll down to control 3D animation</span>
+            <span>{t.hero.scrollProgress}</span>
             <span className="text-zinc-500">•</span>
             <span>{scrollPercent}%</span>
             {loadPercent < 100 && (
               <>
                 <span className="text-zinc-500">•</span>
                 <span className="text-zinc-500 font-mono text-[10px]">
-                  Buffering {loadPercent}%
+                  {t.hero.buffering} {loadPercent}%
                 </span>
               </>
             )}
@@ -666,7 +670,7 @@ export function HeroSection() {
               href="#about"
               className="text-xs font-mono text-zinc-400 hover:text-white px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800/80 backdrop-blur-md transition-colors"
             >
-              Skip Intro ↓
+              {t.hero.skipIntro}
             </Link>
           </div>
 

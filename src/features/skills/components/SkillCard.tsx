@@ -7,7 +7,7 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ skill }: SkillCardProps) {
-  const proficiencyStyles = {
+  const proficiencyStyles: Record<SkillItem["proficiency"], string> = {
     Advanced: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
     Proficient: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
     Intermediate: "bg-amber-500/10 text-amber-400 border-amber-500/20",

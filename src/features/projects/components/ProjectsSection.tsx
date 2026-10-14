@@ -1,18 +1,23 @@
+"use client";
+
 import React from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { PROJECTS_DATA } from "../data/projects.data";
 import { ProjectCard } from "./ProjectCard";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export function ProjectsSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="projects" className="py-24 bg-zinc-950/40 relative">
       <Container>
         <SectionHeading
-          badge="Portfolio"
-          title="Featured Projects"
-          subtitle="A selection of recent applications and open source tools demonstrating clean architecture and modern development practices."
+          badge={t.projects.badge}
+          title={t.projects.title}
+          subtitle={t.projects.subtitle}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">

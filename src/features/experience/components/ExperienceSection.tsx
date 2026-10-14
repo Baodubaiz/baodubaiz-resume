@@ -1,18 +1,23 @@
+"use client";
+
 import React from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { EXPERIENCE_DATA } from "../data/experience.data";
 import { ExperienceItem } from "./ExperienceItem";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export function ExperienceSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="experience" className="py-24 relative">
       <Container size="default">
         <SectionHeading
-          badge="Journey"
-          title="Experience & Education"
-          subtitle="My professional milestones, engineering contributions, and academic background."
+          badge={t.experience.badge}
+          title={t.experience.title}
+          subtitle={t.experience.subtitle}
         />
 
         <div className="max-w-3xl mx-auto">

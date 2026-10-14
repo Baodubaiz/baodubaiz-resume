@@ -3,21 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { NavItem } from "@/types/common.type";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
-const NAV_ITEMS: NavItem[] = [
-  { id: "hero", label: "Home", href: "#hero" },
-  { id: "about", label: "About", href: "#about" },
-  { id: "skills", label: "Skills", href: "#skills" },
-  { id: "projects", label: "Projects", href: "#projects" },
-  { id: "experience", label: "Experience", href: "#experience" },
-  { id: "contact", label: "Contact", href: "#contact" },
-];
-
 export function Navbar() {
   const activeSection = useActiveSection("hero");
+  const { language, setLanguage, t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -31,6 +24,15 @@ export function Navbar() {
   }, []);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const navItems = [
+    { id: "hero", label: t.nav.home, href: "#hero" },
+    { id: "about", label: t.nav.about, href: "#about" },
+    { id: "skills", label: t.nav.skills, href: "#skills" },
+    { id: "projects", label: t.nav.projects, href: "#projects" },
+    { id: "experience", label: t.nav.experience, href: "#experience" },
+    { id: "contact", label: t.nav.contact, href: "#contact" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-5 transition-all duration-300 bg-transparent">
@@ -50,7 +52,7 @@ export function Navbar() {
 
         {/* Desktop Navigation (Cinematic Dark Glass Island - Perfectly Centered) */}
         <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 bg-zinc-950/60 p-1.5 rounded-full border border-zinc-800/80 backdrop-blur-md transition-colors shadow-lg shadow-black/30 z-10">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
@@ -69,8 +71,38 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Desktop spacer to keep layout balanced */}
-        <div className="hidden md:block w-36 pointer-events-none" />
+        {/* Desktop Language Switcher (Right aligned, balanced layout) */}
+        <div className="hidden md:flex items-center justify-end z-10">
+          <div className="flex items-center p-1 rounded-full bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md shadow-md">
+            <button
+              type="button"
+              onClick={() => setLanguage("en")}
+              className={cn(
+                "px-2.5 py-1 rounded-full text-[11px] font-mono font-medium transition-all duration-200",
+                language === "en"
+                  ? "bg-zinc-800 text-white font-semibold shadow-sm"
+                  : "text-zinc-500 hover:text-zinc-300"
+              )}
+              aria-label="Switch to English"
+            >
+              EN
+            </button>
+            <span className="text-zinc-700 text-xs px-0.5 select-none">/</span>
+            <button
+              type="button"
+              onClick={() => setLanguage("vi")}
+              className={cn(
+                "px-2.5 py-1 rounded-full text-[11px] font-mono font-medium transition-all duration-200",
+                language === "vi"
+                  ? "bg-zinc-800 text-white font-semibold shadow-sm"
+                  : "text-zinc-500 hover:text-zinc-300"
+              )}
+              aria-label="Chuyển sang Tiếng Việt"
+            >
+              VI
+            </button>
+          </div>
+        </div>
 
         {/* Mobile Menu Button (Lucide vector icon) */}
         <button
@@ -90,8 +122,8 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-zinc-950/90 border-b border-zinc-800/80 px-4 py-4 space-y-2 backdrop-blur-xl shadow-2xl">
-          {NAV_ITEMS.map((item) => {
+        <div className="md:hidden bg-zinc-950/95 border-b border-zinc-800/80 px-4 py-4 space-y-3 backdrop-blur-xl shadow-2xl">
+          {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <a
@@ -109,6 +141,37 @@ export function Navbar() {
               </a>
             );
           })}
+
+          {/* Mobile Language Switcher */}
+          <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between">
+            <span className="text-xs text-zinc-400 font-mono">Language / Ngôn ngữ</span>
+            <div className="flex items-center p-1 rounded-full bg-zinc-900 border border-zinc-800">
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={cn(
+                  "px-3 py-1 rounded-full text-xs font-mono transition-all",
+                  language === "en"
+                    ? "bg-zinc-800 text-white font-semibold"
+                    : "text-zinc-500 hover:text-zinc-300"
+                )}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("vi")}
+                className={cn(
+                  "px-3 py-1 rounded-full text-xs font-mono transition-all",
+                  language === "vi"
+                    ? "bg-zinc-800 text-white font-semibold"
+                    : "text-zinc-500 hover:text-zinc-300"
+                )}
+              >
+                VI
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </header>
