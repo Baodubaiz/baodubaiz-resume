@@ -3,6 +3,7 @@
 import React from "react";
 import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Target, Boxes, RefreshCw } from "lucide-react";
 
@@ -10,34 +11,37 @@ const MINDSET_CARDS_CONFIG = [
   {
     icon: Target,
     iconColor: "text-cyan-400",
+    spotlight: "rgba(6, 182, 212, 0.22)",
     iconBoxClass:
-      "bg-cyan-500/10 border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:bg-cyan-500/20",
+      "bg-cyan-500/10 border-cyan-500/20 group-hover:border-cyan-500/50 group-hover:bg-cyan-500/25 group-hover:scale-110",
     borderClass: "border-zinc-800/80",
     hoverClass:
-      "hover:border-cyan-500/30 hover:shadow-[0_8px_30px_rgba(6,182,212,0.06)]",
+      "hover:border-cyan-500/40 hover:shadow-[0_12px_36px_rgba(6,182,212,0.1)]",
   },
   {
     icon: Boxes,
     iconColor: "text-indigo-400",
+    spotlight: "rgba(99, 102, 241, 0.22)",
     iconBoxClass:
-      "bg-indigo-500/10 border-indigo-500/20 group-hover:border-indigo-500/40 group-hover:bg-indigo-500/20",
+      "bg-indigo-500/10 border-indigo-500/20 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/25 group-hover:scale-110",
     borderClass: "border-zinc-800/80",
     hoverClass:
-      "hover:border-indigo-500/30 hover:shadow-[0_8px_30px_rgba(99,102,241,0.06)]",
+      "hover:border-indigo-500/40 hover:shadow-[0_12px_36px_rgba(99,102,241,0.1)]",
   },
   {
     icon: RefreshCw,
     iconColor: "text-emerald-400",
+    spotlight: "rgba(16, 185, 129, 0.22)",
     iconBoxClass:
-      "bg-emerald-500/10 border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:bg-emerald-500/20",
+      "bg-emerald-500/10 border-emerald-500/20 group-hover:border-emerald-500/50 group-hover:bg-emerald-500/25 group-hover:scale-110",
     borderClass: "border-zinc-800/80",
     hoverClass:
-      "hover:border-emerald-500/30 hover:shadow-[0_8px_30px_rgba(16,185,129,0.06)]",
+      "hover:border-emerald-500/40 hover:shadow-[0_12px_36px_rgba(16,185,129,0.1)]",
   },
 ];
 
 export function AboutSection() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   return (
     <section id="about" className="py-24 sm:py-32 bg-zinc-950 relative overflow-hidden">
@@ -74,6 +78,53 @@ export function AboutSection() {
           <p className="text-base sm:text-lg md:text-xl text-zinc-300/90 leading-relaxed font-normal max-w-3xl">
             {t.about.description}
           </p>
+
+          {/* Interactive Core Attributes / Metrics Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 mt-8 border-t border-zinc-800/60">
+            {[
+              {
+                label: language === "vi" ? "Đào tạo" : "Education",
+                val: "HUTECH",
+                sub: language === "vi" ? "Kỹ thuật phần mềm" : "Software Engineering",
+              },
+              {
+                label: language === "vi" ? "Định hướng" : "Core Focus",
+                val: "Full-Stack",
+                sub: language === "vi" ? "Trọng tâm Backend" : "Backend-driven",
+              },
+              {
+                label: language === "vi" ? "Kiến trúc" : "Philosophy",
+                val: "Clean Code",
+                sub: language === "vi" ? "Module & Bền vững" : "Modular & Scalable",
+              },
+              {
+                label: language === "vi" ? "Trạng thái" : "Status",
+                val: "Available",
+                sub: language === "vi" ? "Sẵn sàng đón nhận" : "Open for Opportunities",
+              },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                className="group p-3.5 rounded-xl bg-zinc-900/30 border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 hover:bg-zinc-900/50 hover:-translate-y-0.5"
+              >
+                <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider mb-1 flex items-center justify-between">
+                  <span>{stat.label}</span>
+                  {i === 3 && (
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    </span>
+                  )}
+                </div>
+                <div className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-200 transition-colors">
+                  {stat.val}
+                </div>
+                <div className="text-[11px] text-zinc-400 font-mono mt-0.5">
+                  {stat.sub}
+                </div>
+              </div>
+            ))}
+          </div>
         </ScrollReveal>
 
         {/* ======================================================== */}
@@ -95,16 +146,18 @@ export function AboutSection() {
               </p>
             </div>
 
-            {/* 3 nguyên tắc dạng 3 cột phân cách rõ ràng */}
+            {/* 3 nguyên tắc với Spotlight và 3D Tilt tương tác */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {t.about.philosophy.principles.map((principle, idx) => (
-                <div
+                <SpotlightCard
                   key={principle.title}
-                  className="group relative p-6 sm:p-7 rounded-2xl bg-zinc-900/30 border border-zinc-800/60 hover:border-zinc-700/80 transition-all duration-300 hover:-translate-y-0.5"
+                  spotlightColor="rgba(99, 102, 241, 0.2)"
+                  enableTilt={true}
+                  className="group relative p-6 sm:p-7 hover:border-indigo-500/40 hover:shadow-[0_12px_36px_rgba(99,102,241,0.08)]"
                 >
                   <div className="text-xs font-mono text-zinc-500 mb-3 flex items-center justify-between">
-                    <span>PRINCIPLE // 0{idx + 1}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-indigo-400 transition-colors" />
+                    <span className="group-hover:text-indigo-300 transition-colors">PRINCIPLE // 0{idx + 1}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-indigo-400 group-hover:scale-125 transition-all" />
                   </div>
                   <h4 className="text-lg font-semibold text-white mb-2.5 group-hover:text-indigo-200 transition-colors">
                     {principle.title}
@@ -112,7 +165,7 @@ export function AboutSection() {
                   <p className="text-sm text-zinc-400 leading-relaxed">
                     {principle.description}
                   </p>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </ScrollReveal>
@@ -134,7 +187,7 @@ export function AboutSection() {
             </div>
           </ScrollReveal>
 
-          {/* Ba thẻ tư duy kỹ thuật */}
+          {/* Ba thẻ tư duy kỹ thuật với Spotlight Color riêng biệt */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {t.about.mindset.cards.map((card, idx) => {
               const config = MINDSET_CARDS_CONFIG[idx] || MINDSET_CARDS_CONFIG[0];
@@ -145,12 +198,14 @@ export function AboutSection() {
                   direction="up"
                   delayMs={150 + idx * 100}
                 >
-                  <div
-                    className={`group relative h-full p-6 sm:p-7 rounded-2xl bg-zinc-900/40 backdrop-blur-sm border transition-all duration-300 hover:-translate-y-1 ${config.borderClass} ${config.hoverClass}`}
+                  <SpotlightCard
+                    spotlightColor={config.spotlight}
+                    enableTilt={true}
+                    className={`group relative h-full p-6 sm:p-7 ${config.borderClass} ${config.hoverClass}`}
                   >
                     {/* Hàng trên: Số thứ tự và Icon kỹ thuật */}
                     <div className="flex items-center justify-between mb-5">
-                      <span className="font-mono text-xs font-bold tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                      <span className="font-mono text-xs font-bold tracking-widest text-zinc-500 group-hover:text-zinc-200 transition-colors">
                         {card.number}
                       </span>
                       <div
@@ -167,7 +222,7 @@ export function AboutSection() {
                     <p className="text-sm text-zinc-400 leading-relaxed">
                       {card.description}
                     </p>
-                  </div>
+                  </SpotlightCard>
                 </ScrollReveal>
               );
             })}

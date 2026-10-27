@@ -327,18 +327,18 @@ export function HeroSection() {
           style={{ opacity: isInitialReady ? 1 : 0 }}
         />
 
-        {/* Ambient Vignette & Contrast Gradients */}
+        {/* Ambient Vignette & Contrast Gradients (Slightly lighter than original for optimal clarity) */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-zinc-950/60"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/85 via-zinc-950/10 to-zinc-950/40"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-radial-[circle_at_center,transparent_30%,rgba(9,9,11,0.65)_100%]"
+          className="pointer-events-none absolute inset-0 bg-radial-[circle_at_center,transparent_35%,rgba(9,9,11,0.45)_100%]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-black/15"
+          className="pointer-events-none absolute inset-0 bg-black/10"
         />
 
         {/* Ambient Top Glow */}
@@ -359,7 +359,7 @@ export function HeroSection() {
           <Container>
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
               {/* Status Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium bg-zinc-900/80 border border-zinc-800 text-zinc-300 mb-6 backdrop-blur-md shadow-lg shadow-black/40">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-black/20 border border-white/10 text-zinc-100 mb-6 backdrop-blur-sm drop-shadow-md">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -368,7 +368,7 @@ export function HeroSection() {
               </div>
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1] drop-shadow-md">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1] drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
                 {t.hero.greeting}{" "}
                 <span className="bg-gradient-to-r from-indigo-400 via-violet-300 to-amber-200 bg-clip-text text-transparent">
                   {t.hero.name}
@@ -376,22 +376,22 @@ export function HeroSection() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-lg sm:text-2xl text-zinc-200 font-medium mb-4 drop-shadow">
+              <p className="text-lg sm:text-2xl text-white font-medium mb-4 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
                 {t.hero.role}
               </p>
 
-              <p className="text-sm sm:text-base text-zinc-300/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
+              <p className="text-sm sm:text-base text-zinc-100 max-w-2xl leading-relaxed mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                 {t.hero.bio}
               </p>
 
               {/* Quick Tech Highlights (Metadata specs, not clickable buttons) */}
-              <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-zinc-400 mb-8">
-                <span className="text-zinc-500 uppercase tracking-wider text-[11px] mr-1">{t.hero.stackLabel}</span>
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-zinc-300 mb-8">
+                <span className="text-zinc-400 uppercase tracking-wider text-[11px] mr-1 drop-shadow">{t.hero.stackLabel}</span>
                 {["Java", "NestJS", "TypeScript", "React", "NextJS", "Tailwind CSS", "NodeJS"].map(
                   (tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md bg-zinc-900/60 border border-zinc-800 text-zinc-300 text-xs shadow-sm"
+                      className="px-2.5 py-1 rounded-full bg-black/20 border border-white/10 text-zinc-100 text-xs backdrop-blur-sm drop-shadow-sm hover:bg-white/[0.1] transition-colors"
                     >
                       {tech}
                     </span>
@@ -400,17 +400,14 @@ export function HeroSection() {
               </div>
 
               {/* Ambient Scroll Cue */}
-              <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono tracking-wider">
+              <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono tracking-wider drop-shadow">
                 <span>{t.hero.scrollCue}</span>
-                <ChevronDown className="w-3.5 h-3.5 animate-bounce text-zinc-400" />
+                <ChevronDown className="w-3.5 h-3.5 animate-bounce text-zinc-300" />
               </div>
             </div>
           </Container>
         </div>
 
-        {/* ======================================================== */}
-        {/* NARRATIVE CHAPTER 2: THE PORTAL / CANVAS (25% - 48%)     */}
-        {/* ======================================================== */}
         {/* ======================================================== */}
         {/* NARRATIVE CHAPTER 2: FRONTEND & CRYSTAL (22% - 48%)      */}
         {/* ======================================================== */}
@@ -422,23 +419,23 @@ export function HeroSection() {
         >
           <Container>
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-cyan-300 bg-zinc-950/80 border border-cyan-800/40 mb-5 backdrop-blur-md">
-                <Layers className="w-3.5 h-3.5 text-cyan-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-cyan-200 bg-cyan-950/30 border border-cyan-400/25 mb-5 backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                <Layers className="w-3.5 h-3.5 text-cyan-300 drop-shadow" />
                 <span>{t.hero.chapter2.badge}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-md">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 {t.hero.chapter2.title1}{" "}
                 <span className="bg-gradient-to-r from-cyan-300 via-indigo-200 to-fuchsia-300 bg-clip-text text-transparent">
                   {t.hero.chapter2.titleHighlight}
                 </span>
               </h2>
 
-              <p className="text-base sm:text-xl text-zinc-200/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
+              <p className="text-base sm:text-xl text-zinc-100 max-w-2xl leading-relaxed mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
                 {t.hero.chapter2.desc}
               </p>
 
-              {/* Technical Capability Specs (Clean dark telemetry cards, not buttons) */}
+              {/* Technical Capability Specs (Airy crystal cards seamlessly embedded in 3D space) */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl w-full">
                 {[
                   {
@@ -466,13 +463,13 @@ export function HeroSection() {
                   return (
                     <div
                       key={item.title}
-                      className="p-3.5 rounded-xl bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md flex flex-col items-center text-center shadow-lg shadow-black/40"
+                      className="p-3 rounded-xl bg-black/15 hover:bg-black/30 border border-white/[0.08] hover:border-cyan-400/30 backdrop-blur-[2px] flex flex-col items-center text-center transition-all duration-300 group"
                     >
-                      <Icon className="w-4 h-4 text-cyan-400/90 mb-2" />
-                      <span className="text-xs sm:text-sm font-semibold text-zinc-200">
+                      <Icon className="w-4 h-4 text-cyan-300 mb-1.5 drop-shadow-[0_0_8px_rgba(6,182,212,0.6)] group-hover:scale-110 transition-transform" />
+                      <span className="text-xs sm:text-sm font-semibold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
                         {item.title}
                       </span>
-                      <span className="text-[11px] text-zinc-400 mt-0.5 font-mono">
+                      <span className="text-[11px] text-zinc-200/90 mt-0.5 font-mono drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
                         {item.desc}
                       </span>
                     </div>
@@ -494,56 +491,56 @@ export function HeroSection() {
         >
           <Container>
             <div className="flex flex-col items-center text-center max-w-4xl mx-auto px-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-amber-300 bg-zinc-950/80 border border-amber-800/40 mb-5 backdrop-blur-md">
-                <Building2 className="w-3.5 h-3.5 text-amber-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-amber-200 bg-amber-950/30 border border-amber-400/25 mb-5 backdrop-blur-sm shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+                <Building2 className="w-3.5 h-3.5 text-amber-300 drop-shadow" />
                 <span>{t.hero.chapter3.badge}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-md">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 {t.hero.chapter3.title1}{" "}
                 <span className="bg-gradient-to-r from-amber-200 via-orange-300 to-rose-300 bg-clip-text text-transparent">
                   {t.hero.chapter3.titleHighlight}
                 </span>
               </h2>
 
-              <p className="text-base sm:text-lg text-zinc-200/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
+              <p className="text-base sm:text-lg text-zinc-100 max-w-2xl leading-relaxed mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
                 {t.hero.chapter3.desc}
               </p>
 
-              {/* 3 Cinematic Architecture Capability Panels (Clean dark glass, not colorful button boxes) */}
+              {/* 3 Cinematic Architecture Capability Panels (Airy glassmorphism integrated into scene) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl">
-                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
-                  <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-amber-400 mb-3">
+                <div className="p-4 sm:p-5 rounded-2xl bg-black/15 hover:bg-black/30 border border-white/[0.08] hover:border-amber-400/30 backdrop-blur-[2px] text-left transition-all duration-300 group">
+                  <div className="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/25 flex items-center justify-center text-amber-300 mb-3 drop-shadow-[0_0_10px_rgba(245,158,11,0.4)]">
                     <Terminal className="w-4 h-4" />
                   </div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1">
+                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                     {t.hero.chapter3.apiTitle}
                   </h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-200/90 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]">
                     {t.hero.chapter3.apiDesc}
                   </p>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
-                  <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-emerald-400 mb-3">
+                <div className="p-4 sm:p-5 rounded-2xl bg-black/15 hover:bg-black/30 border border-white/[0.08] hover:border-emerald-400/30 backdrop-blur-[2px] text-left transition-all duration-300 group">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-400/10 border border-emerald-400/25 flex items-center justify-center text-emerald-300 mb-3 drop-shadow-[0_0_10px_rgba(16,185,129,0.4)]">
                     <Database className="w-4 h-4" />
                   </div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1">
+                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                     {t.hero.chapter3.dbTitle}
                   </h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-200/90 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]">
                     {t.hero.chapter3.dbDesc}
                   </p>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md text-left shadow-xl shadow-black/40">
-                  <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-sky-400 mb-3">
+                <div className="p-4 sm:p-5 rounded-2xl bg-black/15 hover:bg-black/30 border border-white/[0.08] hover:border-sky-400/30 backdrop-blur-[2px] text-left transition-all duration-300 group">
+                  <div className="w-8 h-8 rounded-lg bg-sky-400/10 border border-sky-400/25 flex items-center justify-center text-sky-300 mb-3 drop-shadow-[0_0_10px_rgba(56,189,248,0.4)]">
                     <Building2 className="w-4 h-4" />
                   </div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1">
+                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                     {t.hero.chapter3.infraTitle}
                   </h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-xs text-zinc-200/90 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.85)]">
                     {t.hero.chapter3.infraDesc}
                   </p>
                 </div>
@@ -563,19 +560,19 @@ export function HeroSection() {
         >
           <Container>
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-emerald-300 bg-zinc-950/80 border border-emerald-800/40 mb-5 backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest text-emerald-200 bg-emerald-950/30 border border-emerald-400/25 mb-5 backdrop-blur-sm shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-300 drop-shadow" />
                 <span>{t.hero.chapter4.badge}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-md">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 {t.hero.chapter4.title1}{" "}
                 <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-indigo-300 bg-clip-text text-transparent">
                   {t.hero.chapter4.titleHighlight}
                 </span>
               </h2>
 
-              <p className="text-base sm:text-xl text-zinc-200/90 max-w-2xl leading-relaxed mb-8 drop-shadow">
+              <p className="text-base sm:text-xl text-zinc-100 max-w-2xl leading-relaxed mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
                 {t.hero.chapter4.desc}
               </p>
 
@@ -583,13 +580,13 @@ export function HeroSection() {
               <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
                 <a
                   href="#about"
-                  className="px-6 py-3 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 font-semibold text-sm transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                  className="px-6 py-3 rounded-xl bg-white text-zinc-950 hover:bg-zinc-100 font-semibold text-sm transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                 >
                   {t.hero.chapter4.ctaJourney}
                 </a>
                 <a
                   href="#skills"
-                  className="px-6 py-3 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 font-medium text-sm border border-zinc-700/60 backdrop-blur-md transition-all hover:-translate-y-0.5 active:translate-y-0"
+                  className="px-6 py-3 rounded-xl bg-black/25 hover:bg-black/40 text-white font-medium text-sm border border-white/20 backdrop-blur-md transition-all hover:-translate-y-0.5 active:translate-y-0"
                 >
                   {t.hero.chapter4.ctaSkills}
                 </a>
@@ -601,7 +598,7 @@ export function HeroSection() {
                 </a>
               </div>
 
-              <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono mt-2">
+              <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono mt-2 drop-shadow">
                 <span>{t.hero.chapter4.continueScroll}</span>
                 <ChevronDown className="w-3.5 h-3.5 animate-bounce" />
               </div>
@@ -614,7 +611,7 @@ export function HeroSection() {
         {/* ======================================================== */}
         <nav
           aria-label="Story chapters"
-          className="hidden md:flex flex-col gap-3 fixed right-6 top-1/2 -translate-y-1/2 z-30 bg-zinc-950/70 p-2.5 rounded-full border border-zinc-800/80 backdrop-blur-md shadow-xl"
+          className="hidden md:flex flex-col gap-3 fixed right-6 top-1/2 -translate-y-1/2 z-30 bg-black/25 p-2 rounded-full border border-white/10 backdrop-blur-md shadow-lg"
         >
           {chapters.map((ch, idx) => {
             const isActive = activeChapter === idx;
@@ -633,7 +630,7 @@ export function HeroSection() {
                 <span
                   className={`block rounded-full transition-all duration-300 ${isActive
                     ? "w-2.5 h-6 bg-gradient-to-b from-indigo-400 to-amber-300 shadow-md shadow-indigo-500/50"
-                    : "w-2 h-2 bg-zinc-600 group-hover:bg-zinc-400"
+                    : "w-2 h-2 bg-zinc-500 group-hover:bg-zinc-300"
                     }`}
                 />
               </button>
@@ -647,17 +644,17 @@ export function HeroSection() {
         <div className="absolute bottom-6 left-0 right-0 z-20 flex flex-col items-center pointer-events-none px-6">
           {/* Scroll cue (visible mainly in chapter 1) */}
           <div
-            className={`flex items-center gap-2 text-xs font-mono text-zinc-400 bg-zinc-950/80 px-4 py-1.5 rounded-full border border-zinc-800/80 backdrop-blur-md mb-3 transition-opacity duration-500 ${activeChapter === 0 ? "opacity-100" : "opacity-0"
+            className={`flex items-center gap-2 text-xs font-mono text-zinc-200 bg-black/30 px-4 py-1.5 rounded-full border border-white/10 backdrop-blur-md mb-3 transition-opacity duration-500 ${activeChapter === 0 ? "opacity-100" : "opacity-0"
               }`}
           >
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping" />
             <span>{t.hero.scrollProgress}</span>
-            <span className="text-zinc-500">•</span>
+            <span className="text-zinc-400">•</span>
             <span>{scrollPercent}%</span>
             {loadPercent < 100 && (
               <>
-                <span className="text-zinc-500">•</span>
-                <span className="text-zinc-500 font-mono text-[10px]">
+                <span className="text-zinc-400">•</span>
+                <span className="text-zinc-400 font-mono text-[10px]">
                   {t.hero.buffering} {loadPercent}%
                 </span>
               </>
@@ -668,14 +665,14 @@ export function HeroSection() {
           <div className="absolute right-6 bottom-0 pointer-events-auto">
             <Link
               href="#about"
-              className="text-xs font-mono text-zinc-400 hover:text-white px-3 py-1.5 rounded-lg bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800/80 backdrop-blur-md transition-colors"
+              className="text-xs font-mono text-zinc-200 hover:text-white px-3 py-1.5 rounded-lg bg-black/30 hover:bg-black/50 border border-white/10 backdrop-blur-md transition-colors"
             >
               {t.hero.skipIntro}
             </Link>
           </div>
 
           {/* Bottom Progress Line */}
-          <div className="w-full max-w-md h-1 bg-zinc-900/80 rounded-full overflow-hidden border border-zinc-800/60">
+          <div className="w-full max-w-md h-1 bg-black/30 rounded-full overflow-hidden border border-white/10">
             <div
               className="h-full bg-gradient-to-r from-indigo-500 via-amber-400 to-emerald-400 transition-all duration-100 ease-out"
               style={{ width: `${Math.max(scrollPercent, 2)}%` }}
