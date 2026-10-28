@@ -119,11 +119,77 @@ export interface TranslationDictionary {
     subtitle: string;
     viewProject: string;
     sourceCode: string;
+    exploreCaseStudy: string;
+    closeCaseStudy: string;
+    allCategories: string;
+    educationCategory: string;
+    ecommerceCategory: string;
+    enterpriseCategory: string;
+    roleLabel: string;
+    statusLabel: string;
+    highlightsLabel: string;
+    focusLabel: string;
+    stackLabel: string;
+    filterLabel: string;
+    privateRepo: string;
+    featuredBadge: string;
+    prevProject: string;
+    nextProject: string;
+    tabs: {
+      overview: string;
+      capabilities: string;
+      challenges: string;
+      architecture: string;
+      techStack: string;
+      contribution: string;
+      outcomes: string;
+    };
+    challengeLabels: {
+      problem: string;
+      approach: string;
+      tradeoffs: string;
+      benefits: string;
+      complexities: string;
+      rationale: string;
+    };
+    architectureLabels: {
+      systemOverview: string;
+      workflowTitle: string;
+      statusImplemented: string;
+      statusExternal: string;
+      statusPlanned: string;
+    };
+    contributionLabels: {
+      features: string;
+      architecture: string;
+      devops: string;
+    };
+    outcomesLabels: {
+      status: string;
+      points: string;
+      confidentiality: string;
+    };
   };
   experience: {
     badge: string;
     title: string;
     subtitle: string;
+    workTitle: string;
+    workSubtitle: string;
+    eduTitle: string;
+    eduSubtitle: string;
+    employmentTypeLabel: string;
+    durationLabel: string;
+    projectLabel: string;
+    responsibilitiesLabel: string;
+    techStackLabel: string;
+    degreeLabel: string;
+    majorLabel: string;
+    gpaLabel: string;
+    classificationLabel: string;
+    statusLabel: string;
+    periodLabel: string;
+    temporaryCertNotice: string;
   };
   contact: {
     badge: string;
