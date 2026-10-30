@@ -6,7 +6,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { useTranslation } from "@/hooks/useTranslation";
 import type { NavItem } from "@/types/common.type";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileDown } from "lucide-react";
 
 export function Navbar() {
   const activeSection = useActiveSection("hero");
@@ -71,8 +71,20 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Desktop Language Switcher (Right aligned, balanced layout) */}
-        <div className="hidden md:flex items-center justify-end z-10">
+        {/* Desktop Actions (PDF Download & Language Switcher) */}
+        <div className="hidden md:flex items-center gap-3 justify-end z-10">
+          <a
+            href="/Lam-Bao-Portfolio.pdf"
+            download="Lam-Bao-Portfolio.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 hover:text-white text-xs font-medium transition-all shadow-sm backdrop-blur-md hover:scale-105"
+            title="Tải Portfolio PDF (Tiếng Việt)"
+          >
+            <FileDown className="w-3.5 h-3.5" />
+            <span>Tải PDF</span>
+          </a>
+
           <div className="flex items-center p-1 rounded-full bg-zinc-950/60 border border-zinc-800/80 backdrop-blur-md shadow-md">
             <button
               type="button"
@@ -141,6 +153,19 @@ export function Navbar() {
               </a>
             );
           })}
+
+          {/* Mobile PDF Download Button */}
+          <a
+            href="/Lam-Bao-Portfolio.pdf"
+            download="Lam-Bao-Portfolio.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={closeMobileMenu}
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-blue-600/20 border border-blue-500/40 text-blue-300 font-medium text-xs shadow-sm hover:bg-blue-600/30 transition-colors"
+          >
+            <FileDown className="w-4 h-4" />
+            <span>Tải Portfolio PDF (Tiếng Việt)</span>
+          </a>
 
           {/* Mobile Language Switcher */}
           <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between">

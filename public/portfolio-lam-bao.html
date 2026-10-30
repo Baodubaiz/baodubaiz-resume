@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lâm Bảo - Portfolio Kỹ Sư Phần Mềm (Software Engineer)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --accent: #1d4ed8;
+      --accent-subtle: #eff6ff;
+      --accent-border: #bfdbfe;
+      --emerald: #047857;
+      --emerald-light: #ecfdf5;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --text-subtle: #64748b;
+      --bg-page: #f8fafc;
+      --border-card: #e2e8f0;
+      --tag-bg: #f1f5f9;
+      --tag-border: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #cbd5e1;
+      color: var(--text-main);
+      line-height: 1.45;
+      font-size: 12.5px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Floating Toolbar on Browser */
+    .download-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .download-bar .info {
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .download-bar .badge-live {
+      background: #10b981;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .download-bar .actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      box-shadow: 0 0 12px rgba(37,99,235,0.4);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Container Document */
+    .document-wrapper {
+      max-width: 860px;
+      margin: 20px auto 40px;
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+    }
+
+    /* 3 Individual Pages Structure (A4 Proportion) */
+    .a4-page {
+      background: #ffffff;
+      padding: 20px 32px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .a4-page + .a4-page {
+      border-top: 2px dashed #94a3b8;
+    }
+
+    @media screen {
+      .a4-page + .a4-page::before {
+        content: "— TRANG " attr(data-page) " / 3 —";
+        display: block;
+        text-align: center;
+        margin-top: -12px;
+        margin-bottom: 24px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #64748b;
+        background: #e2e8f0;
+        width: 140px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+    }
+
+    /* Header Profile */
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--primary);
+      padding-top: 6px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .header-info h1 {
+      font-size: 26px;
+      font-weight: 850;
+      color: var(--primary);
+      line-height: 1.35;
+      padding-top: 4px;
+      letter-spacing: -0.01em;
+    }
+    .header-info .headline-role {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 3px;
+    }
+    .header-info .headline-summary {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      max-width: 500px;
+      line-height: 1.45;
+    }
+    .header-contacts {
+      text-align: right;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: var(--bg-page);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-card);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    .contact-item strong {
+      color: var(--primary);
+    }
+    .contact-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--emerald);
+      font-weight: 700;
+      font-size: 11px;
+      background: var(--emerald-light);
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #a7f3d0;
+      align-self: flex-end;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--emerald);
+      border-radius: 50%;
+    }
+
+    /* Section Headers */
+    .section {
+      margin-bottom: 14px;
+    }
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1.5px solid var(--border-card);
+      padding-bottom: 4px;
+    }
+    .section-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent-border);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .section-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .section-tagline {
+      font-size: 11.5px;
+      color: var(--text-subtle);
+      margin-left: auto;
+      font-weight: 500;
+    }
+
+    /* Philosophy / Mindset */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .phil-card {
+      background: var(--bg-page);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
+      padding: 9px 11px;
+    }
+    .phil-card .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+    .phil-card h4 {
+      font-size: 12px;
+      font-weight: 750;
+      color: var(--primary);
+      margin-bottom: 3px;
+    }
+    .phil-card p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* 6 Tradeoff Dimensions */
+    .tradeoff-banner {
+      background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      padding: 9px 12px;
+    }
+    .tradeoff-title {
+      font-size: 11.5px;
+      font-weight: 750;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+    .tradeoff-pills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .tradeoff-pill {
+      background: #ffffff;
+      padding: 5px 8px;
+      border-radius: 5px;
+      border: 1px solid #dbeafe;
+      font-size: 10.5px;
+    }
+    .tradeoff-pill strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .tradeoff-pill span {
+      color: var(--text-subtle);
+      display: block;
+      font-size: 10px;
+      margin-top: 1px;
+    }
+
+    /* Skills Grid */
+    .skills-table {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .skill-block {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
+      padding: 9px 12px;
+    }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .skill-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--text-subtle);
+      background: var(--tag-bg);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .skill-name {
+      font-size: 12.5px;
+      font-weight: 750;
+      color: var(--primary);
+    }
+    .skill-desc {
+      font-size: 11px;
+      color: var(--text-subtle);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .skill-tag {
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--bg-page);
+      border: 1px solid var(--tag-border);
+      color: var(--primary-light);
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+    .skill-tag.core {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+
+    /* Problem-Solution Box */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .problem-box {
+      background: var(--bg-page);
+      border-left: 3px solid var(--accent);
+      border-top: 1px solid var(--border-card);
+      border-right: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-card);
+      border-radius: 0 5px 5px 0;
+      padding: 7px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .problem-title {
+      font-size: 11.5px;
+      font-weight: 750;
+      color: var(--primary);
+    }
+    .problem-content {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .problem-content strong {
+      color: var(--primary);
+    }
+
+    /* Projects Cards (Compact & Elegant) */
+    .project-card {
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .project-card.featured {
+      border-top: 3px solid var(--accent);
+    }
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+    .project-title-group h3 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+    }
+    .project-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+    .project-meta-pill {
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      padding: 1.5px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .project-overview-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+    .project-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 5px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
+      padding: 5px 8px;
+    }
+    .project-col-box h5 {
+      font-size: 11px;
+      font-weight: 750;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 3px;
+    }
+    .project-col-box ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .project-col-box ul li {
+      font-size: 10.8px;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 11px;
+      margin-bottom: 2px;
+      line-height: 1.38;
+    }
+    .project-col-box ul li::before {
+      content: "•";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    .tech-stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--border-card);
+      font-size: 10px;
+    }
+    .tech-stack-label {
+      font-weight: 750;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      font-size: 9.5px;
+      letter-spacing: 0.04em;
+    }
+    .tech-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 1px 6px;
+      border-radius: 3px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Experience & Education */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-card);
+    }
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+    .timeline-sidebar {
+      display: flex;
+      flex-direction: column;
+    }
+    .timeline-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-subtle);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 3px;
+    }
+    .timeline-org {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .timeline-location {
+      font-size: 10.5px;
+      color: var(--text-subtle);
+    }
+    .timeline-content h4 {
+      font-size: 13px;
+      font-weight: 750;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .timeline-content .sub-summary {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+    .timeline-content ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .timeline-content ul li {
+      font-size: 11px;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 2px;
+      line-height: 1.38;
+    }
+    .timeline-content ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10.5px;
+    }
+
+    /* Career Direction & Roadmap */
+    .career-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .career-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+    .career-box-title {
+      font-size: 12.5px;
+      font-weight: 750;
+      color: var(--primary);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .career-box-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: var(--text-muted);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .career-box p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+    .career-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+    .career-tag {
+      font-size: 10px;
+      font-weight: 600;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* 4-Step Roadmap */
+    .roadmap-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .roadmap-step {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
+      padding: 8px 8px;
+    }
+    .roadmap-step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 1px 5px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .roadmap-step-title {
+      font-size: 11.5px;
+      font-weight: 750;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .roadmap-step-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Long-term vision statement */
+    .vision-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border-radius: 6px;
+      padding: 11px 14px;
+    }
+    .vision-box h5 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+    .vision-box p {
+      font-size: 11px;
+      color: #e2e8f0;
+      line-height: 1.45;
+    }
+
+    /* Strict A4 Print Styling */
+    @media print {
+      body {
+        background: #ffffff !important;
+        font-size: 10.8px;
+        line-height: 1.35;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .download-bar {
+        display: none !important;
+      }
+      .document-wrapper {
+        margin: 0 !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      .a4-page {
+        padding: 0 !important;
+        margin: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      .a4-page + .a4-page {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+      .section {
+        margin-bottom: 10px !important;
+      }
+      .section-title-wrap {
+        margin-bottom: 6px !important;
+        padding-bottom: 3px !important;
+      }
+      .project-card {
+        padding: 9px 12px !important;
+        margin-bottom: 7px !important;
+      }
+      .project-grid-2col {
+        gap: 8px !important;
+        padding: 6px 8px !important;
+        margin-bottom: 6px !important;
+      }
+      .timeline-item {
+        padding: 5px 0 !important;
+      }
+      .vision-box {
+        padding: 7px 11px !important;
+      }
+      .career-box {
+        padding: 7px 10px !important;
+      }
+      .roadmap-steps {
+        gap: 6px !important;
+        margin-bottom: 7px !important;
+      }
+      .roadmap-step {
+        padding: 6px 6px !important;
+      }
+      .header-container {
+        padding-top: 6px !important;
+      }
+      .header-info h1 {
+        line-height: 1.35 !important;
+        padding-top: 4px !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 12mm 12mm 10mm 12mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Bar on Web Browser -->
+  <header class="download-bar">
+    <div class="info">
+      <span class="badge-live">PORTFOLIO CHUẨN IN A4 (3 TRANG)</span>
+      <span>Lâm Bảo — Software Engineer &bull; Full-Stack &amp; Backend Lead</span>
+    </div>
+    <div class="actions">
+      <button onclick="window.print()" class="btn btn-primary">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z"/></svg>
+        In / Lưu file PDF ngay (Ctrl+P)
+      </button>
+      <a href="/Lam-Bao-Portfolio.pdf" download="Lam-Bao-Portfolio.pdf" class="btn btn-secondary">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Tải file PDF sẵn có
+      </a>
+    </div>
+  </header>
+
+  <div class="document-wrapper">
+
+    <!-- ========================================================================= -->
+    <!-- TRANG 1 / 3: PROFILE HEADER + TƯ DUY KỸ THUẬT + HỆ SINH THÁI KỸ NĂNG -->
+    <!-- ========================================================================= -->
+    <article class="a4-page" data-page="1">
+      
+      <!-- HEADER PROFILE -->
+      <section class="header-container">
+        <div class="header-info">
+          <h1>LÂM BẢO</h1>
+          <div class="headline-role">KỸ SƯ PHẦN MỀM &bull; FULL-STACK DEVELOPER (TRỌNG TÂM BACKEND)</div>
+          <p class="headline-summary">
+            Sinh viên Kỹ thuật phần mềm (HUTECH) xếp loại Giỏi. Chuyên tâm chuyển hóa bài toán nghiệp vụ thành giải pháp kiến trúc vững chắc, dữ liệu toàn vẹn, bảo mật cao và vận hành ổn định trên nền tảng Spring Boot, NestJS, Next.js và PostgreSQL.
+          </p>
+        </div>
+        <div class="header-contacts">
+          <div class="status-badge">
+            <span class="status-dot"></span> Sẵn sàng nhận việc ngay
+          </div>
+          <div class="contact-item">
+            <span>Email:</span>
+            <a href="mailto:baolam12122004@gmail.com">baolam12122004@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span>GitHub:</span>
+            <a href="https://github.com/Baodubaiz" target="_blank">github.com/Baodubaiz</a>
+          </div>
+          <div class="contact-item">
+            <span>Địa điểm:</span>
+            <strong>TP. Hồ Chí Minh (UTC+7)</strong>
+          </div>
+          <div class="contact-item">
+            <span>Hình thức:</span>
+            <span>Toàn thời gian &bull; Hybrid &bull; Remote</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHẦN 1: TƯ DUY KỸ THUẬT & TRIẾT LÝ PHÁT TRIỂN -->
+      <section class="section">
+        <div class="section-title-wrap">
+          <span class="section-number">01</span>
+          <h2 class="section-title">Tư Duy Kỹ Thuật &amp; Triết Lý Phát Triển</h2>
+          <span class="section-tagline">Problem-Oriented &bull; Data Integrity &bull; Systemic Trade-offs</span>
+        </div>
+
+        <div class="philosophy-grid">
+          <div class="phil-card">
+            <div class="num">NGUYÊN TẮC 01</div>
+            <h4>Đơn giản &amp; Dễ bảo trì</h4>
+            <p>Ưu tiên giải pháp rõ ràng, ranh giới phân tách trách nhiệm mạch lạc. Hạn chế tối đa sự phức tạp không cần thiết (Over-engineering) để thuận tiện cho việc thay đổi và mở rộng.</p>
+          </div>
+          <div class="phil-card">
+            <div class="num">NGUYÊN TẮC 02</div>
+            <h4>Đúng đắn về Nghiệp vụ &amp; Dữ liệu</h4>
+            <p>Không chỉ dừng lại ở việc "chạy được tính năng". Chú trọng hàng đầu tính hợp lệ, toàn vẹn của dữ liệu tại tầng DB Engine và bảo đảm quy tắc nghiệp vụ thực thi nhất quán.</p>
+          </div>
+          <div class="phil-card">
+            <div class="num">NGUYÊN TẮC 03</div>
+            <h4>Cấu trúc trước sự Chắp vá</h4>
+            <p>Thiết kế kiến trúc dạng mô-đun (Feature-Based / DDD), chuẩn hóa API contracts và schema trước khi hiện thực code, thay vì chỉ chắp vá đáp ứng yêu cầu trước mắt.</p>
+          </div>
+        </div>
+
+        <!-- 6 Trade-off dimensions -->
+        <div class="tradeoff-banner">
+          <div class="tradeoff-title">6 Yếu tố cân bằng kỹ thuật (Trade-off Matrix) trong mọi quyết định thiết kế:</div>
+          <div class="tradeoff-pills">
+            <div class="tradeoff-pill">
+              <strong>1. Hiệu năng (Performance):</strong>
+              <span>Tối ưu độ trễ, query latency &amp; Web Vitals.</span>
+            </div>
+            <div class="tradeoff-pill">
+              <strong>2. Tính nhất quán (Consistency):</strong>
+              <span>Bảo đảm ACID, khóa phân tán &amp; chống dị thường.</span>
+            </div>
+            <div class="tradeoff-pill">
+              <strong>3. Độ tin cậy (Reliability):</strong>
+              <span>Chống chịu lỗi, idempotency &amp; khả năng phục hồi.</span>
+            </div>
+            <div class="tradeoff-pill">
+              <strong>4. Mở rộng (Scalability):</strong>
+              <span>Khả năng tăng trưởng tải lượng theo chiều ngang.</span>
+            </div>
+            <div class="tradeoff-pill">
+              <strong>5. Tối ưu chi phí (Cost):</strong>
+              <span>Tối ưu băng thông, hạ tầng đám mây và server.</span>
+            </div>
+            <div class="tradeoff-pill">
+              <strong>6. Kiểm soát phức tạp:</strong>
+              <span>Giữ hệ thống tinh gọn, dễ đọc, dễ kiểm thử.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHẦN 2: HỆ SINH THÁI KỸ THUẬT & THỰC HÀNH GIẢI PHÁP -->
+      <section class="section" style="margin-bottom: 0;">
+        <div class="section-title-wrap">
+          <span class="section-number">02</span>
+          <h2 class="section-title">Hệ Sinh Thái Kỹ Thuật &amp; Thực Hành Giải Pháp</h2>
+          <span class="section-tagline">Nền tảng công nghệ &bull; Mô hình kiến trúc &bull; Xử lý bài toán thực tế</span>
+        </div>
+
+        <div class="skills-table">
+          <!-- Backend -->
+          <div class="skill-block">
+            <div class="skill-header">
+              <span class="skill-name">Backend Engineering</span>
+              <span class="skill-badge">SERVER-SIDE</span>
+            </div>
+            <div class="skill-desc">Thiết kế REST API chuẩn mực, xử lý logic nghiệp vụ, bảo mật xác thực và phân quyền RBAC.</div>
+            <div class="skill-tags">
+              <span class="skill-tag core">Java 17 / Spring Boot</span>
+              <span class="skill-tag core">Node.js / NestJS</span>
+              <span class="skill-tag">RESTful API Design</span>
+              <span class="skill-tag">JWT &amp; Token Rotation</span>
+              <span class="skill-tag">RBAC</span>
+              <span class="skill-tag">Spring Security</span>
+              <span class="skill-tag">SSE &amp; Webhook</span>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="skill-block">
+            <div class="skill-header">
+              <span class="skill-name">Database &amp; Data Integrity</span>
+              <span class="skill-badge">DATA &amp; CACHE</span>
+            </div>
+            <div class="skill-desc">Mô hình hóa quan hệ thực thể, ràng buộc dữ liệu toàn vẹn, kiểm soát tranh chấp và tối ưu truy vấn.</div>
+            <div class="skill-tags">
+              <span class="skill-tag core">PostgreSQL</span>
+              <span class="skill-tag core">Redis &amp; Lua Scripts</span>
+              <span class="skill-tag">Prisma ORM</span>
+              <span class="skill-tag">Spring Data JPA</span>
+              <span class="skill-tag">ACID Transactions</span>
+              <span class="skill-tag">B-Tree Indexing</span>
+              <span class="skill-tag">Foreign Keys</span>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-block">
+            <div class="skill-header">
+              <span class="skill-name">Frontend Architecture</span>
+              <span class="skill-badge">CLIENT-SIDE</span>
+            </div>
+            <div class="skill-desc">Xây dựng giao diện responsive, tối ưu Server-Side Rendering (SSR), quản lý luồng dữ liệu và hiệu năng 60 FPS.</div>
+            <div class="skill-tags">
+              <span class="skill-tag core">Next.js (App Router)</span>
+              <span class="skill-tag core">React 19 / TypeScript</span>
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Three.js / 3D Canvas</span>
+              <span class="skill-tag">State Management</span>
+              <span class="skill-tag">Core Web Vitals</span>
+              <span class="skill-tag">i18n</span>
+            </div>
+          </div>
+
+          <!-- Architecture & DevOps -->
+          <div class="skill-block">
+            <div class="skill-header">
+              <span class="skill-name">Architecture &amp; DevOps</span>
+              <span class="skill-badge">SYS DESIGN &amp; OPS</span>
+            </div>
+            <div class="skill-desc">Cấu trúc mã nguồn module hóa, đóng gói container, tự động hóa quy trình kiểm thử và giám sát lỗi.</div>
+            <div class="skill-tags">
+              <span class="skill-tag core">Docker &amp; Containerization</span>
+              <span class="skill-tag core">CI/CD (GitHub Actions / Jenkins)</span>
+              <span class="skill-tag">Linux Server</span>
+              <span class="skill-tag">Clean Architecture</span>
+              <span class="skill-tag">SOLID</span>
+              <span class="skill-tag">Grafana Loki &amp; MDC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Problem Highlights -->
+        <div class="problems-grid">
+          <div class="problem-box">
+            <div class="problem-title">🛡️ Kiểm soát Đồng thời &amp; Toàn vẹn Dữ liệu</div>
+            <div class="problem-content">
+              <strong>Bài toán:</strong> Tranh chấp khi nhiều người cùng đặt chỗ/căn hộ dẫn đến over-booking.<br>
+              <strong>Giải pháp:</strong> <em>Database Interactive Transactions</em> kết hợp <em>Khóa phân tán Redis (Lua Script)</em> và Composite Unique Constraints.
+            </div>
+          </div>
+
+          <div class="problem-box">
+            <div class="problem-title">🔑 Bảo mật Phiên &amp; Xoay vòng Token Nguyên tử</div>
+            <div class="problem-content">
+              <strong>Bài toán:</strong> Nguy cơ đánh cắp token hoặc race-condition khi nhiều request song song làm mới token.<br>
+              <strong>Giải pháp:</strong> <em>Atomic Token Rotation</em> với HTTP-only Cookie, kịch bản Lua trên Redis phát hiện tái sử dụng và thu hồi tức thì.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- ========================================================================= -->
+    <!-- TRANG 2 / 3: HỒ SƠ DỰ ÁN THỰC CHIẾN (DỰ ÁN 1: QLKTX & DỰ ÁN 2: NOVATECH) -->
+    <!-- ========================================================================= -->
+    <article class="a4-page" data-page="2">
+      
+      <section class="section" style="margin-bottom: 0;">
+        <div class="section-title-wrap">
+          <span class="section-number">03</span>
+          <h2 class="section-title">Hồ Sơ Dự Án Kỹ Thuật Tiêu Biểu</h2>
+          <span class="section-tagline">Production-grade &bull; Nghiệp vụ chuyên sâu &bull; Giải pháp kiến trúc</span>
+        </div>
+
+        <!-- DỰ ÁN 1: QLKTX -->
+        <article class="project-card featured" style="margin-bottom: 8px;">
+          <div class="project-card-header">
+            <div class="project-title-group">
+              <h3>01. QLKTX — HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ SINH VIÊN</h3>
+              <div class="project-subtitle">Nền tảng số hóa quản lý lưu trú, quy trình xếp chỗ phòng ở và truy vết lịch sử cư trú</div>
+            </div>
+            <span class="project-meta-pill">Đồ án Capstone Nghiệm thu Xuất sắc (85–90%)</span>
+          </div>
+          <p class="project-overview-text">
+            Số hóa toàn diện quản lý lưu trú sinh viên phân cấp từ Đơn vị, Tòa nhà, Tầng, Phòng đến từng Giường đơn, bảo toàn dữ liệu cư trú qua các kỳ học.
+          </p>
+
+          <div class="project-grid-2col">
+            <div class="project-col-box">
+              <h5>🎯 Điểm sáng Kỹ thuật &amp; Kiến trúc</h5>
+              <ul>
+                <li><strong>Mô hình hóa quan hệ đa cấp:</strong> Schema chuẩn hóa Đơn vị -> Tòa -> Tầng -> Phòng -> Giường với composite unique constraints chống xếp trùng.</li>
+                <li><strong>Ranh giới giao dịch ($transaction):</strong> Đóng gói quy trình chuyển phòng và trả phòng trong một transaction duy nhất, tự động rollback khi có lỗi.</li>
+              </ul>
+            </div>
+            <div class="project-col-box">
+              <h5>💡 Thách thức Kỹ thuật &amp; Kết quả</h5>
+              <ul>
+                <li><strong>Thách thức:</strong> Xung đột khi xếp chỗ hàng loạt vào mùa cao điểm, nguy cơ hai sinh viên cùng phân vào 1 giường hoặc sai lệch chỗ trống.</li>
+                <li><strong>Kết quả:</strong> Audit Trail ghi vết tự động bất biến, nghiệm thu xuất sắc và loại bỏ 100% tình trạng sai lệch báo cáo tỷ lệ lấp đầy.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-stack-row">
+            <span class="tech-stack-label">Công nghệ:</span>
+            <span class="tech-badge">NestJS</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Prisma ORM</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Ant Design</span>
+          </div>
+        </article>
+
+        <!-- DỰ ÁN 2: NOVATECH E-COMMERCE -->
+        <article class="project-card featured" style="margin-bottom: 8px;">
+          <div class="project-card-header">
+            <div class="project-title-group">
+              <h3>02. NOVATECH — NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ LAPTOP &amp; LINH KIỆN</h3>
+              <div class="project-subtitle">Hệ thống e-commerce chuyên sâu phần cứng với kiến trúc Java Spring Boot &amp; PayOS</div>
+            </div>
+            <span class="project-meta-pill">Hoàn thiện 85% &bull; Full-stack &amp; Backend Lead</span>
+          </div>
+          <p class="project-overview-text">
+            Nền tảng thương mại điện tử chuyên biệt phần cứng, xử lý mô hình hóa thông số kỹ thuật đa dạng, kiểm soát tranh chấp tồn kho và tích hợp thanh toán.
+          </p>
+
+          <div class="project-grid-2col">
+            <div class="project-col-box">
+              <h5>🎯 Điểm sáng Kỹ thuật &amp; Kiến trúc</h5>
+              <ul>
+                <li><strong>Mô hình thông số linh hoạt:</strong> Cấu trúc lấy cảm hứng từ EAV cho phép quản lý thông số đa dạng (CPU, RAM, GPU) không cần đổi bảng.</li>
+                <li><strong>Kiểm soát tranh chấp tồn kho:</strong> Ranh giới giao dịch <code>@Transactional</code> kiểm tra tồn kho nghiêm ngặt trước khi trừ, chống bán vượt tồn.</li>
+              </ul>
+            </div>
+            <div class="project-col-box">
+              <h5>💡 Thách thức Kỹ thuật &amp; Kết quả</h5>
+              <ul>
+                <li><strong>Thách thức:</strong> Race-condition khi nhiều khách cùng mua món cuối cùng và webhook thanh toán bị retry gửi lặp nhiều lần.</li>
+                <li><strong>Kết quả:</strong> Cơ chế Idempotent Consumer cho PayOS Webhook xác thực chữ ký HMAC an toàn; API latency &lt; 80ms, SSR Next.js chuẩn SEO.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-stack-row">
+            <span class="tech-stack-label">Công nghệ:</span>
+            <span class="tech-badge">Java 17</span>
+            <span class="tech-badge">Spring Boot</span>
+            <span class="tech-badge">Spring Data JPA</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Next.js (App Router)</span>
+            <span class="tech-badge">PayOS</span>
+            <span class="tech-badge">AWS S3</span>
+          </div>
+        </article>
+
+        <!-- DỰ ÁN 3: ĐẤT VIỆT GROUP REAL ESTATE -->
+        <article class="project-card featured" style="margin-bottom: 0;">
+          <div class="project-card-header">
+            <div class="project-title-group">
+              <h3>03. ĐẤT VIỆT GROUP — NỀN TẢNG SỐ BẤT ĐỘNG SẢN DOANH NGHIỆP</h3>
+              <div class="project-subtitle">Số hóa quản lý dự án BĐS, đặt chỗ trực tuyến, Three.js 3D &amp; thông báo thời gian thực đa kênh</div>
+            </div>
+            <span class="project-meta-pill">Nền tảng Doanh nghiệp &bull; Nghiệm thu Vận hành</span>
+          </div>
+          <p class="project-overview-text">
+            Nền tảng số hóa toàn diện kết nối Dự án, Phân khu đến từng Căn hộ. Tích hợp trực quan hóa 3D sa bàn số, khóa phân tán Redis và thông báo đa kênh.
+          </p>
+
+          <div class="project-grid-2col">
+            <div class="project-col-box">
+              <h5>🎯 Điểm sáng Kỹ thuật &amp; Kiến trúc</h5>
+              <ul>
+                <li><strong>Khóa phân tán Redis (Distributed Lock):</strong> Ngăn chặn xung đột đặt chỗ căn hộ đồng thời bằng Lua Script với cơ chế tự giải phóng TTL lease an toàn.</li>
+                <li><strong>Xoay vòng Token nguyên tử qua Lua:</strong> Quản lý Refresh Token trên Redis, phát hiện ngay lập tức hành vi tái sử dụng token trái phép.</li>
+              </ul>
+            </div>
+            <div class="project-col-box">
+              <h5>💡 Thách thức Kỹ thuật &amp; Kết quả</h5>
+              <ul>
+                <li><strong>Thách thức:</strong> Trực quan hóa sa bàn 3D tương tác và hiển thị bản vẽ kỹ thuật dung lượng lớn không gây nghẽn giao diện người dùng.</li>
+                <li><strong>Kết quả:</strong> Web Workers xử lý bản vẽ lớn; Trace ID MDC gắn Grafana Loki; nghiệm thu vận hành thực tế loại bỏ 100% đặt trùng căn hộ.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-stack-row">
+            <span class="tech-stack-label">Công nghệ:</span>
+            <span class="tech-badge">Java 17 (DDD)</span>
+            <span class="tech-badge">Spring Boot</span>
+            <span class="tech-badge">Redis &amp; Lua Scripts</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">React 19</span>
+            <span class="tech-badge">Three.js</span>
+            <span class="tech-badge">SSE &amp; Firebase</span>
+          </div>
+        </article>
+
+      </section>
+
+    </article>
+
+    <!-- ========================================================================= -->
+    <!-- TRANG 3 / 3: KINH NGHIỆM THỰC CHIẾN + HỌC VẤN + LỘ TRÌNH SỰ NGHIỆP -->
+    <!-- ========================================================================= -->
+    <article class="a4-page" data-page="3">
+      
+      <!-- PHẦN 4: KINH NGHIỆM LÀM VIỆC & HỌC VẤN -->
+      <section class="section">
+        <div class="section-title-wrap">
+          <span class="section-number">04</span>
+          <h2 class="section-title">Kinh Nghiệm Thực Chiến &amp; Nền Tảng Học Vấn</h2>
+          <span class="section-tagline">Môi trường công nghiệp &bull; Đào tạo kỹ thuật phần mềm bài bản</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-sidebar">
+            <span class="timeline-period">6 Tháng &bull; Part-time</span>
+            <span class="timeline-org">Repo Technology</span>
+            <span class="timeline-location">TP. Hồ Chí Minh</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Software Engineer (Part-time) — Dự án Hệ thống QLKTX</h4>
+            <div class="sub-summary">Tham gia phát triển backend NestJS, frontend React/TypeScript và CSDL PostgreSQL qua Prisma ORM.</div>
+            <ul>
+              <li>Hiện thực hóa các nghiệp vụ quản lý sinh viên, phân bổ chỗ ở, điều chuyển phòng và trả phòng bảo toàn ACID.</li>
+              <li>Hỗ trợ xây dựng cơ chế Audit Logs truy vết thay đổi dữ liệu và tham gia tích hợp CI/CD theo chuẩn Git workflows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-sidebar">
+            <span class="timeline-period">10/2022 – 10/2026</span>
+            <span class="timeline-org">Đại học HUTECH</span>
+            <span class="timeline-location">TP. Hồ Chí Minh</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Cử nhân Kỹ thuật Phần mềm (Software Engineering)</h4>
+            <div class="sub-summary">
+              Điểm trung bình tích lũy: <strong>GPA 3.2 / 4.0</strong> &bull; Xếp loại tốt nghiệp: <strong>Giỏi</strong> &bull; <em>Đã nhận bằng tốt nghiệp tạm thời</em>
+            </div>
+            <ul>
+              <li>Đào tạo bài bản về Kỹ thuật phần mềm, Kiến trúc hệ thống, Cơ sở dữ liệu và Cấu trúc dữ liệu &amp; Giải thuật.</li>
+              <li>Đồ án capstone chuyên ngành mô phỏng quy trình quản trị thực tế đạt kết quả <strong>nghiệm thu xuất sắc</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHẦN 5: ĐỊNH HƯỚNG CHUYÊN MÔN & LỘ TRÌNH SỰ NGHIỆP -->
+      <section class="section" style="margin-bottom: 0;">
+        <div class="section-title-wrap">
+          <span class="section-number">05</span>
+          <h2 class="section-title">Định Hướng Chuyên Môn &amp; Lộ Trình Sự Nghiệp</h2>
+          <span class="section-tagline">Tầm nhìn kỹ sư đa tầng &bull; DevOps &bull; Software Architecture</span>
+        </div>
+
+        <div class="career-grid-2col">
+          <div class="career-box">
+            <div class="career-box-title">
+              <span>DevOps Engineering</span>
+              <span class="career-box-badge">HẠ TẦNG &amp; VẬN HÀNH</span>
+            </div>
+            <p>Tự động hóa build/deploy, quản lý hạ tầng container Docker, thiết lập CI/CD, quan sát hệ thống (Observability) và nâng cao độ tin cậy.</p>
+            <div class="career-tags">
+              <span class="career-tag">Docker</span>
+              <span class="career-tag">CI/CD Pipelines</span>
+              <span class="career-tag">Linux Server</span>
+              <span class="career-tag">Monitoring &amp; Logs</span>
+            </div>
+          </div>
+
+          <div class="career-box">
+            <div class="career-box-title">
+              <span>Software Architecture</span>
+              <span class="career-box-badge">THIẾT KẾ &amp; HỆ THỐNG</span>
+            </div>
+            <p>Thiết kế hệ thống phân tán, tổ chức cấu trúc mã nguồn mô-đun, quản lý tính nhất quán dữ liệu, phân tích trade-off và khả năng mở rộng.</p>
+            <div class="career-tags">
+              <span class="career-tag">System Design</span>
+              <span class="career-tag">Data Consistency</span>
+              <span class="career-tag">Concurrency</span>
+              <span class="career-tag">Modular DDD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-step roadmap -->
+        <div class="roadmap-steps">
+          <div class="roadmap-step">
+            <span class="roadmap-step-num">BƯỚC 01</span>
+            <div class="roadmap-step-title">Foundation</div>
+            <div class="roadmap-step-desc">Củng cố backend (Spring Boot/NestJS), database, Linux và Clean Code/SOLID.</div>
+          </div>
+          <div class="roadmap-step">
+            <span class="roadmap-step-num">BƯỚC 02</span>
+            <div class="roadmap-step-title">Deploy &amp; Ops</div>
+            <div class="roadmap-step-desc">Thực hành Docker, CI/CD pipeline, cấu hình server production và logging.</div>
+          </div>
+          <div class="roadmap-step">
+            <span class="roadmap-step-num">BƯỚC 03</span>
+            <div class="roadmap-step-title">System Design</div>
+            <div class="roadmap-step-desc">Thiết kế hệ thống chịu tải, concurrency, caching phân tán, fault-tolerance.</div>
+          </div>
+          <div class="roadmap-step">
+            <span class="roadmap-step-num">BƯỚC 04</span>
+            <div class="roadmap-step-title">Deeper Expertise</div>
+            <div class="roadmap-step-desc">Tích hợp song hành DevOps và Architecture, làm chủ toàn bộ vòng đời sản phẩm.</div>
+          </div>
+        </div>
+
+        <!-- Long term vision -->
+        <div class="vision-box">
+          <h5>Tầm Nhìn Kỹ Sư Đa Tầng Hệ Thống (System-Wide Engineer)</h5>
+          <p>
+            Mục tiêu dài hạn của tôi là trở thành một kỹ sư có khả năng nhìn nhận hệ thống toàn diện ở cả hai cấp độ: <strong>Ứng dụng (Application &amp; Data)</strong> lẫn <strong>Hạ tầng (Infrastructure &amp; Networking)</strong>. Đưa ra các quyết định kỹ thuật luôn dựa trên cơ sở phân tích thấu đáo và đồng hành cùng chất lượng sản phẩm trong suốt vòng đời phát triển.
+          </p>
+        </div>
+      </section>
+
+    </article>
+
+  </div>
+</body>
+</html>
