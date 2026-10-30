@@ -5,6 +5,7 @@ import { AboutSection } from "@/features/about/components/AboutSection";
 import { SkillsSection } from "@/features/skills/components/SkillsSection";
 import { ProjectsSection } from "@/features/projects/components/ProjectsSection";
 import { ExperienceSection } from "@/features/experience/components/ExperienceSection";
+import { CareerDirectionSection } from "@/features/career/components/CareerDirectionSection";
 import { ContactSection } from "@/features/contact/components/ContactSection";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
+        <CareerDirectionSection />
         <ContactSection />
       </main>
       <Footer />

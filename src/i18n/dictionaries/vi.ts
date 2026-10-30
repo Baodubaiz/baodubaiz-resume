@@ -223,6 +223,192 @@ export const vi: TranslationDictionary = {
     periodLabel: "Thời gian học",
     temporaryCertNotice: "Đã nhận bằng tốt nghiệp tạm thời",
   },
+  career: {
+    badge: "ĐỊNH HƯỚNG PHÁT TRIỂN",
+    title: "Định hướng & Lộ trình nghề nghiệp",
+    subtitle:
+      "Phát triển chuyên môn theo hai hướng DevOps Engineering và Software Architecture dựa trên nền tảng Backend Engineering vững chắc.",
+    direction: {
+      badge: "ĐỊNH HƯỚNG NGHỀ NGHIỆP",
+      title: "Định hướng phát triển chuyên môn",
+      description:
+        "Tôi định hướng phát triển chuyên môn theo hai hướng DevOps Engineering và Software Architecture, dựa trên nền tảng Backend Engineering. Mục tiêu của tôi là hiểu sâu hơn về toàn bộ vòng đời của một hệ thống phần mềm, từ thiết kế ứng dụng và dữ liệu đến triển khai, vận hành và cải tiến hệ thống.",
+      foundationBadge: "NỀN TẢNG KỸ THUẬT DÙNG CHUNG",
+      foundationTitle: "Nền tảng Backend Engineering",
+      foundationDesc:
+        "Gốc rễ vững chắc kết nối tư duy hệ thống, năng lực giải quyết vấn đề và kỹ năng phân tích trade-off.",
+      pillars: {
+        backend: "Backend Engineering",
+        systems: "Systems Thinking",
+        problemSolving: "Problem Solving",
+        tradeoffs: "Trade-off Analysis",
+      },
+      lifecycleTitle: "Vòng đời toàn diện của hệ thống phần mềm",
+      lifecycle: {
+        step1: "Thiết kế ứng dụng & Dữ liệu",
+        step2: "Triển khai & Vận hành",
+        step3: "Cải tiến liên tục",
+      },
+    },
+    mindset: {
+      badge: "TƯ DUY KỸ THUẬT",
+      title: "Tư duy giải quyết vấn đề thực tế",
+      description:
+        "Tôi tiếp cận kỹ thuật theo hướng giải quyết vấn đề trước khi lựa chọn công nghệ. Tôi chú trọng phân tích nguyên nhân gốc, hiểu các ràng buộc của hệ thống và cân bằng giữa hiệu năng, tính nhất quán, độ tin cậy, khả năng mở rộng, chi phí và độ phức tạp. Tôi hướng đến những giải pháp có cơ sở kỹ thuật, dễ bảo trì và phù hợp với nhu cầu thực tế.",
+      tradeoffsTitle: "6 Yếu tố cân bằng kỹ thuật",
+      tradeoffsSubtitle: "Phân tích và tối ưu hóa trước khi đưa ra quyết định công nghệ",
+      dimensions: [
+        {
+          name: "Hiệu năng",
+          label: "Performance",
+          desc: "Tối ưu độ trễ, thời gian phản hồi và thông lượng hệ thống.",
+        },
+        {
+          name: "Tính nhất quán",
+          label: "Consistency",
+          desc: "Bảo đảm tính đúng đắn và toàn vẹn của dữ liệu trong mọi kịch bản.",
+        },
+        {
+          name: "Độ tin cậy",
+          label: "Reliability",
+          desc: "Chống chịu lỗi, khả năng phục hồi nhanh và tính sẵn sàng cao.",
+        },
+        {
+          name: "Khả năng mở rộng",
+          label: "Scalability",
+          desc: "Đáp ứng tăng trưởng tải lượng theo chiều ngang lẫn chiều dọc linh hoạt.",
+        },
+        {
+          name: "Chi phí",
+          label: "Cost Efficiency",
+          desc: "Tối ưu hóa chi phí hạ tầng máy chủ, băng thông và vận hành.",
+        },
+        {
+          name: "Độ phức tạp",
+          label: "Complexity Control",
+          desc: "Kiểm soát độ phức tạp mã nguồn, giữ hệ thống tinh giản và dễ bảo trì.",
+        },
+      ],
+    },
+    focus: {
+      badge: "TRỌNG TÂM PHÁT TRIỂN",
+      title: "Hai hướng chuyên môn song hành",
+      subtitle:
+        "Hai hướng phát triển bổ trợ chặt chẽ, tạo sự liền mạch từ kiến trúc mã nguồn đến hạ tầng thực thi.",
+      devops: {
+        badge: "VẬN HÀNH & ĐỘ TIN CẬY HẠ TẦNG",
+        title: "DevOps Engineering",
+        description:
+          "Tập trung phát triển năng lực tự động hóa quy trình build và deployment, quản lý hạ tầng, thiết lập CI/CD, giám sát hệ thống và nâng cao độ tin cậy trong quá trình vận hành phần mềm.",
+        keyAreas: [
+          "Tự động hóa build & deployment",
+          "Quản lý hạ tầng (Infrastructure)",
+          "Thiết lập & tối ưu pipeline CI/CD",
+          "Giám sát hệ thống (Monitoring & Logging)",
+          "Độ tin cậy vận hành (Site Reliability)",
+        ],
+      },
+      architecture: {
+        badge: "THIẾT KẾ & TỔ CHỨC CẤU TRÚC",
+        title: "Software Architecture",
+        description:
+          "Tập trung nâng cao năng lực thiết kế hệ thống, tổ chức cấu trúc phần mềm, quản lý dữ liệu và tính nhất quán, đánh giá trade-off và xây dựng giải pháp có khả năng bảo trì, mở rộng theo nhu cầu phát triển.",
+        keyAreas: [
+          "Thiết kế hệ thống (System Design)",
+          "Tổ chức cấu trúc phần mềm dạng mô-đun",
+          "Quản lý dữ liệu & tính nhất quán",
+          "Đánh giá & biện luận trade-off",
+          "Giải pháp dễ bảo trì & mở rộng",
+        ],
+      },
+    },
+    roadmap: {
+      badge: "LỘ TRÌNH PHÁT TRIỂN",
+      title: "Lộ trình rèn luyện năng lực từng bước",
+      subtitle:
+        "Mục tiêu phát triển có định hướng rõ ràng, từ củng cố nền tảng kỹ thuật đến phát triển chuyên môn sâu.",
+      milestoneStatus: "Mục tiêu phát triển tương lai",
+      steps: [
+        {
+          stepNumber: "01",
+          stepLabel: "Bước 1",
+          title: "Foundation",
+          description:
+            "Củng cố kiến thức backend, database, networking, Linux và các nguyên lý thiết kế phần mềm.",
+          topics: [
+            "Backend Engineering",
+            "Databases & SQL/NoSQL",
+            "Computer Networking",
+            "Linux Systems",
+            "Software Design Principles",
+          ],
+        },
+        {
+          stepNumber: "02",
+          stepLabel: "Bước 2",
+          title: "Deployment and Operations",
+          description:
+            "Thực hành Docker, CI/CD, triển khai trên server, cấu hình môi trường, logging, monitoring và rollback.",
+          topics: [
+            "Docker Containerization",
+            "CI/CD Pipelines",
+            "Server Deployment",
+            "Environment Config",
+            "Logging & Monitoring",
+            "Rollback Strategies",
+          ],
+        },
+        {
+          stepNumber: "03",
+          stepLabel: "Bước 3",
+          title: "System Design",
+          description:
+            "Đi sâu vào system design, concurrency, data consistency, resilience, performance và scalability.",
+          topics: [
+            "System Design Patterns",
+            "Concurrency & Parallelism",
+            "Data Consistency Models",
+            "Resilience & Fault Tolerance",
+            "Performance Optimization",
+            "Scalability Tactics",
+          ],
+        },
+        {
+          stepNumber: "04",
+          stepLabel: "Bước 4",
+          title: "Deeper Expertise",
+          description:
+            "Tích lũy kinh nghiệm thực tế và tiếp tục phát triển đồng thời năng lực DevOps Engineering và Software Architecture.",
+          topics: [
+            "Kinh nghiệm giải quyết vấn đề thực tế",
+            "Tích hợp năng lực DevOps Engineering",
+            "Nâng cao tư duy Software Architecture",
+            "Tối ưu vòng đời hệ thống end-to-end",
+          ],
+        },
+      ],
+    },
+    longTermGoal: {
+      badge: "MỤC TIÊU DÀI HẠN",
+      title: "Tầm nhìn kỹ sư đa tầng hệ thống",
+      description:
+        "Mục tiêu dài hạn của tôi là trở thành một kỹ sư có khả năng nhìn nhận hệ thống ở cả cấp độ ứng dụng lẫn hạ tầng, đưa ra quyết định kỹ thuật có cơ sở và góp phần đảm bảo chất lượng hệ thống trong suốt vòng đời phát triển. Tôi hướng đến việc xây dựng chuyên môn sâu thông qua giải quyết vấn đề thực tế, cải tiến liên tục và hiểu rõ lý do đằng sau mỗi quyết định kỹ thuật.",
+      pillars: [
+        {
+          title: "Nhìn nhận hệ thống ở cả cấp độ ứng dụng lẫn hạ tầng",
+          desc: "Bao quát toàn diện từ code, business logic, cấu trúc dữ liệu cho đến máy chủ, mạng và môi trường triển khai thực tế.",
+        },
+        {
+          title: "Đưa ra quyết định kỹ thuật có cơ sở",
+          desc: "Mọi lựa chọn công nghệ đều xuất phát từ phân tích yêu cầu kỹ lưỡng, đo lường đánh đổi và giải quyết đúng bài toán.",
+        },
+        {
+          title: "Đảm bảo chất lượng hệ thống suốt vòng đời",
+          desc: "Đồng hành cùng sản phẩm từ khâu thiết kế, hiện thực hóa, kiểm thử đến triển khai, vận hành và liên tục cải tiến.",
+        },
+      ],
+    },
+  },
   contact: {
     badge: "Liên hệ",
     title: "Cùng kết nối & Hợp tác",

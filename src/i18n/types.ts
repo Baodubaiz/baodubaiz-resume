@@ -191,6 +191,82 @@ export interface TranslationDictionary {
     periodLabel: string;
     temporaryCertNotice: string;
   };
+  career: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    direction: {
+      badge: string;
+      title: string;
+      description: string;
+      foundationBadge: string;
+      foundationTitle: string;
+      foundationDesc: string;
+      pillars: {
+        backend: string;
+        systems: string;
+        problemSolving: string;
+        tradeoffs: string;
+      };
+      lifecycleTitle: string;
+      lifecycle: {
+        step1: string;
+        step2: string;
+        step3: string;
+      };
+    };
+    mindset: {
+      badge: string;
+      title: string;
+      description: string;
+      tradeoffsTitle: string;
+      tradeoffsSubtitle: string;
+      dimensions: {
+        name: string;
+        label: string;
+        desc: string;
+      }[];
+    };
+    focus: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      devops: {
+        badge: string;
+        title: string;
+        description: string;
+        keyAreas: string[];
+      };
+      architecture: {
+        badge: string;
+        title: string;
+        description: string;
+        keyAreas: string[];
+      };
+    };
+    roadmap: {
+      badge: string;
+      title: string;
+      subtitle: string;
+      milestoneStatus: string;
+      steps: {
+        stepNumber: string;
+        stepLabel: string;
+        title: string;
+        description: string;
+        topics: string[];
+      }[];
+    };
+    longTermGoal: {
+      badge: string;
+      title: string;
+      description: string;
+      pillars: {
+        title: string;
+        desc: string;
+      }[];
+    };
+  };
   contact: {
     badge: string;
     title: string;
