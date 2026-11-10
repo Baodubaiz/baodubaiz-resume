@@ -415,8 +415,6 @@ export const PROJECTS_DATA: Record<"vi" | "en", ProjectItem[]> = {
       },
 
       links: {
-        githubUrl: "https://github.com/Baodubaiz",
-        liveUrl: "https://baodubaiz-resume.vercel.app",
         caseStudyUrl: "#projects",
       },
     },
@@ -950,8 +948,6 @@ export const PROJECTS_DATA: Record<"vi" | "en", ProjectItem[]> = {
       },
 
       links: {
-        githubUrl: "https://github.com/Baodubaiz",
-        liveUrl: "https://baodubaiz-resume.vercel.app",
         caseStudyUrl: "#projects",
       },
     },
@@ -1981,8 +1977,6 @@ export const PROJECTS_DATA: Record<"vi" | "en", ProjectItem[]> = {
       },
 
       links: {
-        githubUrl: "https://github.com/Baodubaiz",
-        liveUrl: "https://baodubaiz-resume.vercel.app",
         caseStudyUrl: "#projects",
       },
     },
@@ -2516,8 +2510,6 @@ export const PROJECTS_DATA: Record<"vi" | "en", ProjectItem[]> = {
       },
 
       links: {
-        githubUrl: "https://github.com/Baodubaiz",
-        liveUrl: "https://baodubaiz-resume.vercel.app",
         caseStudyUrl: "#projects",
       },
     },

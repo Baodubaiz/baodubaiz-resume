@@ -5,7 +5,6 @@ import type { SocialLink } from "@/types/common.type";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { name: "GitHub", url: "https://github.com/Baodubaiz", label: "GitHub Profile" },
   { name: "LinkedIn", url: "https://linkedin.com", label: "LinkedIn Profile" },
   { name: "Email", url: "mailto:baolam12122004@gmail.com", label: "Send Email" },
 ];

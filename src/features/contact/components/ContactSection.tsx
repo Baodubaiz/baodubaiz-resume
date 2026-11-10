@@ -44,14 +44,11 @@ export function ContactSection() {
             >
               {language === "vi" ? "Gửi Email trực tiếp" : "Send an Email"}
             </a>
-            <a
-              href="https://github.com/Baodubaiz"
-              target="_blank"
-              rel="noopener noreferrer"
+            <span
               className="px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-medium text-sm border border-zinc-700/60 transition-all duration-200 hover:-translate-y-0.5"
             >
               GitHub Profile
-            </a>
+            </span>
           </div>
 
           <div className="mt-10 pt-6 border-t border-zinc-800/70 w-full flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-500">
